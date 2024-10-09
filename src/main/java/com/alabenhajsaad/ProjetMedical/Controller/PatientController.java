@@ -3,6 +3,7 @@ package com.alabenhajsaad.ProjetMedical.Controller;
 import com.alabenhajsaad.ProjetMedical.Model.Patient;
 import com.alabenhajsaad.ProjetMedical.Services.IService.IServicePatient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/api/patient")
 public class PatientController {
     private final IServicePatient iServicePatient ;
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("add")
     public Patient AddPatient(@RequestBody Patient p) {
         return iServicePatient.AddPatient(p);

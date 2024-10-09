@@ -4,6 +4,7 @@ import com.alabenhajsaad.ProjetMedical.Model.Rdv;
 import com.alabenhajsaad.ProjetMedical.Services.IService.IServiceRdv;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.List;
 public class RdvController {
     private final IServiceRdv iServiceRdv ;
     @PostMapping("add")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Object add(@RequestBody Rdv rdv) {
         return iServiceRdv.AddRdv(rdv) ;
     }
