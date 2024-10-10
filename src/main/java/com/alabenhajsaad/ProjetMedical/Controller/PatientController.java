@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/patient")
 public class PatientController {
     private final IServicePatient iServicePatient ;
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @PostMapping("add")
     public Patient AddPatient(@RequestBody Patient p) {
         return iServicePatient.AddPatient(p);
